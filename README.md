@@ -6,11 +6,10 @@ Script uses your newest save in the selected gamemode and saves it into the newl
 # How to use on your computer?
 In order to use this code, you can simply load it into your Visual Studio Code with python installed and launch.<br /><br />
 
-If you want to make it into an .exe file (like i prefer) you need to use ``PyInstaller``.<br />
+If you want to make it into an .exe file (like i prefer) you need to use ``PyInstaller``.<br /><br />
 If you don't have it you can install it using this line in the terminal: ```pip install pyinstaller```,<br />
 then simply enter: ```pyinstaller --onefile main.py``` while inside the folder containing the main.py file.<br /><br />
-
-You can find the .exe file in the ```dist``` folder
+After this you can find the .exe file in the ```dist``` folder
 
 # Program Usage
 ![Choosing folder](/screenshots/1.png)
