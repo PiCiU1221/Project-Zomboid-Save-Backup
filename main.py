@@ -28,8 +28,18 @@ def backup_folder(source, destination):
     folder_name_inside_survivor = os.path.basename(os.path.normpath(source))
     current_time = format_time(time.time()).replace(":", "_")  # Replace colons with underscores
     backup_folder = os.path.join(destination, f"backup_{folder_name_inside_survivor}_{current_time}")
-    shutil.copytree(source, backup_folder)
-    print(f" Backup created at: {backup_folder}")
+
+    # Get the modification time of the newest folder and the latest backup folder (if it exists)
+    newest_folder_time = os.path.getmtime(source)
+    latest_backup_folder = get_newest_folder(destination)
+    latest_backup_time = os.path.getmtime(latest_backup_folder) if os.path.exists(latest_backup_folder) else 0
+
+    # Compare the modification time of the newest folder and the latest backup folder
+    if newest_folder_time == latest_backup_time:
+        print("No changes in the folder. Skipping backup.")
+    else:
+        shutil.copytree(source, backup_folder)
+        print(f" Backup created at: {backup_folder}")
 
 def main():
     print_title()
